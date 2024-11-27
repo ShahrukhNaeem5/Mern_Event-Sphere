@@ -1,0 +1,58 @@
+  .schedule-list-box {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.schedule-list-box:hover {
+    transform: scale(1.02);
+}
+
+.event-image {
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center the image horizontally */
+    margin-bottom: 1rem; /* Space below the image */
+}
+
+.event-image img {
+    width: 100%; /* Take full width of the container */
+    max-width: 600px; /* Set a fixed maximum width */
+    /* height: auto; */
+    border-radius: 0.25rem; /* Slight border radius */
+}
+
+.schedule-box-title h5 {
+    font-weight: bold;
+    color: #333;
+}
+
+.schedule-box-info ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.schedule-box-info ul li {
+    margin-right: 15px;
+}
+
+.schedule-box-bio {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Align items vertically */
+}
+
+.schedule-bio-image img {
+    width: 50px; /* Width for speaker image, if any */
+    height: 50px; /* Height for speaker image, if any */
+}
+
+.pink {
+    color: #d63384; /* Customize your pink color */
+}
+
+.bg-lightgrey {
+    background-color: #f7f7f7; /* Light grey background */
+}
+
+.align-self-end {
+    margin-left: auto; /* Aligns button to the right */
+}

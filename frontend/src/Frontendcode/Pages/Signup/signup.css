@@ -1,0 +1,39 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.btn11{
+    padding-left: 2.5rem;
+     padding-right: 2.5rem;
+} 
+.img12{
+    background-image: url(..//Signup/5.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.lead , .form-label{
+    color: #fff;
+}
+.small:hover{
+    color: #fff;
+   
+}
+
+.img-fluid{
+height: 90vh;
+margin-left: 80px;
+margin-bottom: 50px;
+}
+
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
