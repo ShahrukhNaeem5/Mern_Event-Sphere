@@ -104,7 +104,7 @@ router.post('/', uploads.single('Userimage'), async (req, res) => {
 
         if (!nameCheck) return res.status(401).json({ error: "Enter Valid Name" });
         if (!EmailCheck) return res.status(401).json({ error: "Enter Valid Email" });
-        if (!passCheck) return res.status(401).json({ error: "Password must be contain at least 8 characters" });
+        if (!passCheck) return res.status(401).json({ error: "Password must be contain at least 8 characters 1 UpperCase 1 Lowercase 1 Special Character" });
         if (Userage < 18) return res.status(401).json({ error: "Your Age must be 18 or above" });
         if (!Userrole) return res.status(401).json({ error: "Enter Your Role" });
 
