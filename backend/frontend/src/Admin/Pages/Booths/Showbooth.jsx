@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 const Showbooth = () => {
   const [Booths, setBooths] = useState([])
+  const [error, setError] = useState("");
+const [success, setSuccess] = useState("");
+
   console.log(Booths)
 
   useEffect(() => {
@@ -22,16 +25,20 @@ const Showbooth = () => {
     fetchBooths();
   }, [Booths]);
   const DeleteBooth = async (id) => {
-    const singleDelete = await axios.delete(`http://localhost:5000/api/addbooth/${id}`)
-    if (singleDelete == 201) {
-        setError("")
-        setSuccess("Booth Deleted")
-        seteventDetail(Booths.filter(booth => booth._id !== id));
-
-
+    try {
+      const singleDelete = await axios.delete(`http://localhost:5000/api/addbooth/${id}`);
+      if (singleDelete.status === 201) { // Check response status properly
+        setError(""); // Clear any previous error messages
+        setSuccess("Booth Deleted"); // Set success message
+        setBooths(Booths.filter(booth => booth._id !== id)); // Update the Booths state
+      }
+    } catch (error) {
+      setError("Error deleting booth"); // Set error message
+      setSuccess(""); // Clear success message
+      console.error("Error deleting booth:", error);
     }
-
-}
+  };
+  
 
 
   const gradientStyleforcontainer = {
