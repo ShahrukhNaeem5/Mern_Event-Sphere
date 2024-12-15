@@ -4,8 +4,8 @@ import "../Login/login.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Navbar from '../../Components/Navbar'
-import Footer from '../../Components/Footer'
+import Navbar from '../../Components/Navbar';
+import Footer from '../../Components/Footer';
 
 const Signup = () => {
   const [Roles, setRoles] = useState([]);
@@ -28,6 +28,11 @@ const Signup = () => {
         setRoles(response.data);
       } catch (error) {
         console.error('Error fetching roles:', error);
+        // Fallback roles if the API fails
+        setRoles([
+          { Roles: 'Admin' },
+          { Roles: 'User' }
+        ]);
       }
     };
 
@@ -75,17 +80,16 @@ const Signup = () => {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       
-    <section class="banner page-banner position-relative pb-0">
-          <div class="overlay">
+      <section className="banner page-banner position-relative pb-0">
+        <div className="overlay"></div>
+        <div className="container">
+          <div className="page-title text-center position-relative py-11">
+            <h2 className="text-white">Signup page</h2>
           </div>
-          <div class="container">
-          <div class="page-title text-center position-relative py-11">
-          <h2 class="text-white">Signup page</h2>
-          </div>
-          </div>
-  </section>
+        </div>
+      </section>
 
       <section className="h-100 gradient-form" style={{ backgroundColor: '#eee' }}>
         <div className="container py-5 h-100">
@@ -112,7 +116,7 @@ const Signup = () => {
                         </div>
 
                         <div className="form-outline mb-4">
-                          <select className="form-control" onChange={(e) => setUserrole(e.target.value)}>
+                          <select className="form-control" onChange={(e) => setUserrole(e.target.value)} value={Userrole}>
                             <option value="">Select role</option>
                             {Roles.map((role, index) => (
                               <option key={index} value={role.Roles}>{role.Roles}</option>
@@ -121,15 +125,15 @@ const Signup = () => {
                         </div>
 
                         <div className="form-outline mb-4">
-                          <input type="password" placeholder='UserPassword' className="form-control" onChange={(e) => setUserpassword(e.target.value)} />
+                          <input type="password" placeholder="UserPassword" className="form-control" onChange={(e) => setUserpassword(e.target.value)} />
                         </div>
 
                         <div className="form-outline mb-4">
-                          <input type="password" placeholder='ConfirmPassword' className="form-control" onChange={(e) => setConfirmPassword(e.target.value)} />
+                          <input type="password" placeholder="ConfirmPassword" className="form-control" onChange={(e) => setConfirmPassword(e.target.value)} />
                         </div>
 
                         <div className="form-outline mb-4">
-                          <input type="number" placeholder='Age' className="form-control" onChange={(e) => setUserage(e.target.value)} />
+                          <input type="number" placeholder="Age" className="form-control" onChange={(e) => setUserage(e.target.value)} />
                         </div>
 
                         <div className="form-outline mb-4">
@@ -161,11 +165,10 @@ const Signup = () => {
           </div>
         </div>
       </section>
-      <br /> <br /> <br /><br /> <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <Footer/>
+      <Footer />
       <ToastContainer />
     </>
   );
-}
+};
 
 export default Signup;
