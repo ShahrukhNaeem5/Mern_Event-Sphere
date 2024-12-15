@@ -57,6 +57,8 @@ app.use(helmet.contentSecurityPolicy({
 if (process.env.NODE_ENV === 'production') {
     // Make sure the path points to the correct build folder
     const buildPath = path.join(__dirname, 'frontend', 'build');
+    console.log("Build folder path:", buildPath); // Check if this is correct
+
     app.use(express.static(buildPath));
 
     // This will handle all routes and serve index.html for non-API routes
