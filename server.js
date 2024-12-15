@@ -45,8 +45,10 @@ app.use('/api/addworkshop', Workshoproutes);
 app.use('/api/workshopbooking', WorkShopBookingroutes);
 app.use(helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"],
-      fontSrc: ["'self'", "*"],  // Allow all sources (not recommended)
+      defaultSrc: ["'self'"],                // Allow default content from same origin
+      imgSrc: ["'self'", "https://mdbcdn.b-cdn.net"],  // Allow images from the same origin and from mdbcdn.b-cdn.net
+      fontSrc: ["'self'", "*"],              // Allow fonts from any source (not recommended, but works)
+      // You can add other directives like scriptSrc, styleSrc, etc. based on your needs
     }
   }));
 

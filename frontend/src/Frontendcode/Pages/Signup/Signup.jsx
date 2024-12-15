@@ -16,7 +16,7 @@ const Signup = () => {
   const [Userage, setUserage] = useState('');
   const [Userrole, setUserrole] = useState('');
   const [Userimage, setUserimage] = useState(null);
-  
+
   const navigate = useNavigate();
   const notify = (message) => toast.error(message);
   const successNotify = (message) => toast.success(message);
@@ -25,14 +25,16 @@ const Signup = () => {
     const fetchRoles = async () => {
       try {
         const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/adduser/role');
-        setRoles(response.data);
+        console.log('Fetched roles:', response.data); // Log the roles from API
+        if (response.data && response.data.length > 0) {
+          setRoles(response.data);
+        } else {
+          console.log('No roles received, using default roles');
+          setRoles([{ Roles: 'Admin' }, { Roles: 'User' }]); // Default roles in case API fails or returns empty
+        }
       } catch (error) {
         console.error('Error fetching roles:', error);
-        // Fallback roles if the API fails
-        setRoles([
-          { Roles: 'Admin' },
-          { Roles: 'User' }
-        ]);
+        setRoles([{ Roles: 'Admin' }, { Roles: 'User' }]); // Default roles in case of error
       }
     };
 
@@ -81,7 +83,7 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      
+
       <section className="banner page-banner position-relative pb-0">
         <div className="overlay"></div>
         <div className="container">
@@ -118,9 +120,16 @@ const Signup = () => {
                         <div className="form-outline mb-4">
                           <select className="form-control" onChange={(e) => setUserrole(e.target.value)} value={Userrole}>
                             <option value="">Select role</option>
-                            {Roles.map((role, index) => (
-                              <option key={index} value={role.Roles}>{role.Roles}</option>
-                            ))}
+                            {Roles.length > 0 ? (
+                              Roles.map((role, index) => (
+                                <option key={index} value={role.Roles}>{role.Roles}</option>
+                              ))
+                            ) : (
+                              <>
+                                <option value="Admin">Admin</option>
+                                <option value="User">User</option>
+                              </>
+                            )}
                           </select>
                         </div>
 
@@ -165,6 +174,7 @@ const Signup = () => {
           </div>
         </div>
       </section>
+
       <Footer />
       <ToastContainer />
     </>
