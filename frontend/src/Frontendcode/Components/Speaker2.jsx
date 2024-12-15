@@ -8,7 +8,7 @@ const Speaker2 = () => {
   useEffect(() => {
       const fetchSpeaker = async () => {
           try {
-              const responseData = await axios.get('http://localhost:5000/api/addspeaker');
+              const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addspeaker');
               setspeakerDetail(responseData.data);
           } catch (error) {
               console.error('Error fetching Speakers:', error);

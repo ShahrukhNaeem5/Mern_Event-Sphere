@@ -15,7 +15,7 @@ const Showuser = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const responseData = await axios.get('http://localhost:5000/api/adduser');
+                const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/adduser');
                 setUserDetail(responseData.data);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -25,7 +25,7 @@ const Showuser = () => {
         fetchUser();
     }, [UserDetail]);
     const DeleteUser = async (id) => {
-        const singleDelete = await axios.delete(`http://localhost:5000/api/adduser/${id}`)
+        const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/adduser/${id}`)
         if (singleDelete == 201) {
             setError("")
             setSuccess("User Deleted")

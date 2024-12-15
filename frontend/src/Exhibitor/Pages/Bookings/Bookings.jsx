@@ -15,7 +15,7 @@ const Bookings = () => {
         const fetchBookings = async () => {
             try {
                 const token = Cookies.get('UserAuthToken'); // Get token from cookies
-                const response = await axios.get('http://localhost:5000/api/bookings', {
+                const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/bookings', {
                     headers: {
                         Authorization: `Bearer ${token}` // Pass the token in Authorization header
                     }
@@ -44,7 +44,7 @@ const Bookings = () => {
     // Confirm booking function
     // const handleConfirm = async (bookingId) => {
     //     try {
-    //         await axios.post(`http://localhost:5000/api/bookings/${bookingId}/confirm`);
+    //         await axios.post(`https://mernevent-sphere-production.up.railway.app/api/bookings/${bookingId}/confirm`);
     //         setBookings(bookings.map(booking =>
     //             booking._id === bookingId ? { ...booking, status: 'Confirmed' } : booking
     //         ));
@@ -56,7 +56,7 @@ const Bookings = () => {
     // Reject booking function
     // const handleReject = async (bookingId) => {
     //     try {
-    //         await axios.post(`http://localhost:5000/api/bookings/${bookingId}/reject`);
+    //         await axios.post(`https://mernevent-sphere-production.up.railway.app/api/bookings/${bookingId}/reject`);
     //         setBookings(bookings.map(booking =>
     //             booking._id === bookingId ? { ...booking, status: 'Rejected' } : booking
     //         ));

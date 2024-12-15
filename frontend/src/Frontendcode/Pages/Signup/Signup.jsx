@@ -24,7 +24,7 @@ const Signup = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/adduser/role');
+        const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/adduser/role');
         setRoles(response.data);
       } catch (error) {
         console.error('Error fetching roles:', error);
@@ -57,7 +57,7 @@ const Signup = () => {
     userData.append("Userimage", Userimage);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/adduser', userData, {
+      const response = await axios.post('https://mernevent-sphere-production.up.railway.app/api/adduser', userData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       successNotify(response.data.success);

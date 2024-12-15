@@ -12,7 +12,7 @@ const Showspeaker = () => {
     useEffect(() => {
         const fetchSpeaker = async () => {
             try {
-                const responseData = await axios.get('http://localhost:5000/api/addspeaker');
+                const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addspeaker');
                 setspeakerDetail(responseData.data);
             } catch (error) {
                 console.error('Error fetching Speakers:', error);
@@ -22,7 +22,7 @@ const Showspeaker = () => {
         fetchSpeaker();
     }, [speakerDetail]);
     const Deletespeaker = async (id) => {
-        const singleDelete = await axios.delete(`http://localhost:5000/api/addspeaker/${id}`)
+        const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/addspeaker/${id}`)
         if (singleDelete == 201) {
 
             setspeakerDetail(speakerDetail.filter(speaker => speaker._id !== id));

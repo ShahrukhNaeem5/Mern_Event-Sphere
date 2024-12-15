@@ -22,7 +22,7 @@ const LoginUser = () => {
                 Userpassword
             };
 
-            const fetchData = await axios.post("http://localhost:5000/api/adduser/login", UserLoginData);
+            const fetchData = await axios.post("https://mernevent-sphere-production.up.railway.app/api/adduser/login", UserLoginData);
             setError(""); // Clear any previous error
             
            

@@ -21,7 +21,7 @@ const Userupdate = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const responsee = await axios.get(`http://localhost:5000/api/adduser/${id}`);
+                const responsee = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/adduser/${id}`);
                 const user = responsee.data;
                 setUsername(user[0].Username);
                 setUseremail(user[0].Useremail);
@@ -35,7 +35,7 @@ const Userupdate = () => {
 
         const fetchRoles = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/adduser/role');
+                const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/adduser/role');
                 setRoles(response.data);
             } catch (error) {
                 console.error('Error fetching roles:', error);
@@ -58,7 +58,7 @@ const Userupdate = () => {
         if (Userpassword) userData.append("Userpassword", Userpassword);
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/adduser/${id}`, userData, {
+            const response = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/adduser/${id}`, userData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             setError('');

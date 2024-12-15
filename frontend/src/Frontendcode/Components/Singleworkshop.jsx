@@ -36,7 +36,7 @@ const SingleWorkshop = (props) => {
     const formData = { user: userId, workshop: workshopId };
     
     try {
-      const response = await axios.post("http://localhost:5000/api/workshopbooking", formData);
+      const response = await axios.post("https://mernevent-sphere-production.up.railway.app/api/workshopbooking", formData);
       successNotify(response.data.msg);
 
       setTimeout(() => {

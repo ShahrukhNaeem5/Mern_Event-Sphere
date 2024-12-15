@@ -16,7 +16,7 @@ const ResetPassword = () => {
     const handleReset = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/adduser/reset-password', { email, newPassword });
+            const response = await axios.post('https://mernevent-sphere-production.up.railway.app/api/adduser/reset-password', { email, newPassword });
             toast.success(response.data.message);
             navigate('/login'); // Navigate back to login page after reset
         } catch (error) {

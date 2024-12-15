@@ -15,7 +15,7 @@ const WorkshopList = () => {
   useEffect(() => {
     const fetchWorkshop = async () => {
         try {
-            const responseData = await axios.get('http://localhost:5000/api/addworkshop');
+            const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addworkshop');
             setworkshopDetail(responseData.data.workshops);
         } catch (error) {
             console.error('Error fetching workshops:', error);

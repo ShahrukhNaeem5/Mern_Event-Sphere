@@ -25,7 +25,7 @@ const UpdateSpeaker = () => {
         console.log(SpeakerData)
         try {
 
-            const fetchSpeaker = await axios.post('http://localhost:5000/api/addspeaker', SpeakerData,
+            const fetchSpeaker = await axios.post('https://mernevent-sphere-production.up.railway.app/api/addspeaker', SpeakerData,
                 { headers: { 'Content-Type': 'multipart/form-data' } })
             setError("")
             setSuccess(fetchSpeaker.data.success)

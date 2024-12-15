@@ -14,7 +14,7 @@ const Showbooth = () => {
   useEffect(() => {
     const fetchBooths = async () => {
       try {
-        const responseData = await axios.get('http://localhost:5000/api/addbooth');
+        const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addbooth');
         setBooths(responseData.data.boths);
       } catch (error) {
         console.error('Error fetching Booths:', error);
@@ -28,7 +28,7 @@ const Showbooth = () => {
   // Delete a booth
   const DeleteBooth = async (id) => {
     try {
-      const singleDelete = await axios.delete(`http://localhost:5000/api/addbooth/${id}`);
+      const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/addbooth/${id}`);
       if (singleDelete.status === 201) { // Check response status properly
         setError(""); // Clear any previous error messages
         setSuccess("Booth Deleted"); // Set success message

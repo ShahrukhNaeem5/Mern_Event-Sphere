@@ -27,7 +27,7 @@ const ChangePassword = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/adduser/${User.userId}`, {
+      await axios.put(`https://mernevent-sphere-production.up.railway.app/api/adduser/${User.userId}`, {
         Userpassword: newPassword,
       });
 

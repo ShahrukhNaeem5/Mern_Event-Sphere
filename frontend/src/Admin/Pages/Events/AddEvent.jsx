@@ -30,7 +30,7 @@ const AddEvent = () => {
     useEffect(() => {
         const fetchBooths = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setBooths(responsee.data.booth);
                 const unoccupiedHalls = responsee.data.Halls.filter(hall => hall.status === 'unoccupied');
                 sethalls(unoccupiedHalls);
@@ -47,7 +47,7 @@ const AddEvent = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setfloors(responsee.data.floor);
 
 
@@ -152,7 +152,7 @@ const AddEvent = () => {
 
 
         try {
-            const FetchResponse = await axios.post("http://localhost:5000/api/addevent", eventData,
+            const FetchResponse = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addevent", eventData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
 
             )
@@ -168,7 +168,7 @@ const AddEvent = () => {
             setTheme("");
             setEventimage("");
             if (SorthallId) {
-                await axios.put(`http://localhost:5000/api/addhall/${SorthallId}/status`, {
+                await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addhall/${SorthallId}/status`, {
                     status: "occupied"
                 });
             }

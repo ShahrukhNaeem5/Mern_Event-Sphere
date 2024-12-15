@@ -20,7 +20,7 @@ const Addfloor = () => {
             floorname: floorname,
         }
         try {
-            const FloorResponse = await axios.post("http://localhost:5000/api/addfloor", floorData)
+            const FloorResponse = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addfloor", floorData)
             console.log(FloorResponse)
             if (FloorResponse.status == 201) {
                 setError("")

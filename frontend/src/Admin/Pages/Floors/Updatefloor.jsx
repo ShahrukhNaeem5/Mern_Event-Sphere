@@ -24,7 +24,7 @@ const Updatefloor = () => {
         }
         try {
 
-            const FloorResponse = await axios.put(`http://localhost:5000/api/addfloor/${id}`, floorData);
+            const FloorResponse = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addfloor/${id}`, floorData);
             if (FloorResponse.status === 200) {
                 navigate('/showfloor')
                 setError("");

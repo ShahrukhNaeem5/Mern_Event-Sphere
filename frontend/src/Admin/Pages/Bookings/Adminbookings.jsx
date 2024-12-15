@@ -15,7 +15,7 @@ const Adminbookings = () => {
         const fetchBookings = async () => {
             try {
 
-                const { data } = await axios.get('http://localhost:5000/api/bookings/allbookings', {
+                const { data } = await axios.get('https://mernevent-sphere-production.up.railway.app/api/bookings/allbookings', {
 
                 });
                 setBookings(data);
@@ -33,11 +33,11 @@ const Adminbookings = () => {
     const updateBookingStatus = async (bookingId, status) => {
         try {
 
-            await axios.patch(`http://localhost:5000/api/bookings/${bookingId}`, { status }, {
+            await axios.patch(`https://mernevent-sphere-production.up.railway.app/api/bookings/${bookingId}`, { status }, {
 
             });
             // Refresh the list of bookings
-            const { data } = await axios.get('http://localhost:5000/api/bookings/allbookings', {
+            const { data } = await axios.get('https://mernevent-sphere-production.up.railway.app/api/bookings/allbookings', {
 
             });
             setBookings(data);

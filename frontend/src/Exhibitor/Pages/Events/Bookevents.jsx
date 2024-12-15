@@ -28,7 +28,7 @@ const Bookevents = () => {
   useEffect(() => {
     const fetchevents = async () => {
       try {
-        const fetch = await axios.get('http://localhost:5000/api/addevent')
+        const fetch = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent')
         setEvents(fetch.data.events)
       } catch (error) {
         console.error(`error fetching : ${error} `)

@@ -16,7 +16,7 @@ const AddBooths = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addbooth/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addbooth/');
                 setfloors(responsee.data.floor);
 
             } catch (error) {
@@ -36,7 +36,7 @@ const AddBooths = () => {
         }
 
         try {
-            const FetchBooth = await axios.post("http://localhost:5000/api/addbooth", BoothData)
+            const FetchBooth = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addbooth", BoothData)
             if (FetchBooth.status == 201) {
                 setError("")
                 setSuccess(FetchBooth.data.success)

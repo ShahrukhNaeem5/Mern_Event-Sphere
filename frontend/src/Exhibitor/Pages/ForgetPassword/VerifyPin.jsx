@@ -16,7 +16,7 @@ const VerifyPin = () => {
     const handleVerify = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/adduser/verify-pin', { email, pin });
+            const response = await axios.post('https://mernevent-sphere-production.up.railway.app/api/adduser/verify-pin', { email, pin });
             toast.success(response.data.message);
             navigate(`/reset-password?email=${email}`); // Navigate to reset password page
         } catch (error) {

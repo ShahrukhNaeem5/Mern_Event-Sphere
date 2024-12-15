@@ -14,7 +14,7 @@ const Showhall = () => {
   useEffect(() => {
     const fetchHalls = async () => {
       try {
-        const responseData = await axios.get('http://localhost:5000/api/addhall');
+        const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addhall');
         setHalls(responseData.data);
       } catch (error) {
         console.error('Error fetching Halls:', error);
@@ -27,7 +27,7 @@ const Showhall = () => {
 
 
   const Deletehall = async (id) => {
-    const singleDelete = await axios.delete(`http://localhost:5000/api/addhall/${id}`)
+    const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/addhall/${id}`)
     if (singleDelete == 201) {
 
       setHalls(Halls.filter(hall => hall._id !== id));

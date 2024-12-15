@@ -20,7 +20,7 @@ const Bookingtable = () => {
   useEffect(() => {
     const fetchworkshopBookings = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/workshopbooking/${userId}`);
+        const response = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/workshopbooking/${userId}`);
         setWorkshopBookings(response.data);
         setError('');  // Clear error when data is successfully fetched
       } catch (error) {

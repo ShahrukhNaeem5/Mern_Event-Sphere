@@ -28,7 +28,7 @@ const UpdateEvent = () => {
         const EventData = async () => {
             try {
                 console.log(id);
-                const FetchEvent = await axios.get(`http://localhost:5000/api/addevent/${id}`)
+                const FetchEvent = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/addevent/${id}`)
                 const eventdetail = FetchEvent.data
                 console.log(eventdetail);
                 setTitle(eventdetail[0].title)
@@ -51,7 +51,7 @@ const UpdateEvent = () => {
     useEffect(() => {
         const fetchBooths = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setBooths(responsee.data.booth);
                 const unoccupiedHalls = responsee.data.Halls.filter(hall => hall.status === 'unoccupied');
                 sethalls(unoccupiedHalls);
@@ -69,7 +69,7 @@ const UpdateEvent = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setfloors(responsee.data.floor);
 
 
@@ -146,7 +146,7 @@ const UpdateEvent = () => {
         neweventData.append("Eventimage", Eventimage)
 
         try {
-            const FetchResponse = await axios.put(`http://localhost:5000/api/addevent/${id}`, neweventData,
+            const FetchResponse = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addevent/${id}`, neweventData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
 
             )
@@ -162,7 +162,7 @@ const UpdateEvent = () => {
                 setTheme("");
                 setEventimage("");
                 if (SorthallId) {
-                    await axios.put(`http://localhost:5000/api/addhall/${SorthallId}/status`, {
+                    await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addhall/${SorthallId}/status`, {
                         status: "occupied"
                     });
                 }

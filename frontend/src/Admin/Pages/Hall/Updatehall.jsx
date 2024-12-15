@@ -22,7 +22,7 @@ const Updatehall = () => {
 
     useEffect(async () => {
 
-        const Response = await axios("http://localhost:5000/api/addbooth/");
+        const Response = await axios("https://mernevent-sphere-production.up.railway.app/api/addbooth/");
 
         setBoothId(Response.data.boths);
         setFloorId(Response.data.floor);
@@ -43,7 +43,7 @@ const Updatehall = () => {
 
         try {
             // Send PUT request to update hall details
-            const hallResponse = await axios.put(`http://localhost:5000/api/addhall/${id}`, HallData);
+            const hallResponse = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addhall/${id}`, HallData);
             setError("");
             setSuccess(hallResponse.data.success);
         } catch (error) {

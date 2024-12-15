@@ -24,7 +24,7 @@ const Addworkshop = () => {
     useEffect(() => {
         const fetchSpeakers = async () => {
             try {
-                const speakerResponse = await axios.get("http://localhost:5000/api/addspeaker")
+                const speakerResponse = await axios.get("https://mernevent-sphere-production.up.railway.app/api/addspeaker")
                 const Fetchspeaker = speakerResponse.data
                 setSortedSpeaker(Fetchspeaker)
             } catch (error) {
@@ -39,7 +39,7 @@ const Addworkshop = () => {
     useEffect(() => {
         const fetchBooths = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addworkshop/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addworkshop/');
                 setBooths(responsee.data.booth);
                 
                 const unoccupiedHalls = responsee.data.Halls.filter(hall => hall.status === 'unoccupied');
@@ -57,7 +57,7 @@ const Addworkshop = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addworkshop/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addworkshop/');
                 setfloors(responsee.data.floor);
 
 
@@ -159,7 +159,7 @@ const Addworkshop = () => {
 
 
         try {
-            const FetchResponse = await axios.post("http://localhost:5000/api/addworkshop", WorkshopData,
+            const FetchResponse = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addworkshop", WorkshopData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
             )
 
@@ -175,7 +175,7 @@ const Addworkshop = () => {
                 setSpeaker("");
                 setWorkshopimage("");
                 if (SorthallId) {
-                    const hallResponse = await axios.put(`http://localhost:5000/api/addhall/${SorthallId}/status`, { status: "occupied" });
+                    const hallResponse = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addhall/${SorthallId}/status`, { status: "occupied" });
                 if (hallResponse.status === 200) {
                     console.log('Hall status updated successfully');
                 } else {

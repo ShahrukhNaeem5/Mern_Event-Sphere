@@ -29,7 +29,7 @@ const Form = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/addevent/${id}`);
+                const response = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/addevent/${id}`);
                 setEvent(response.data);
                 setEvent_title(response.data.title);
                 setDate(response.data.date);
@@ -100,7 +100,7 @@ const Form = () => {
         };
 
         try {
-            const fetchresponse = await axios.post('http://localhost:5000/api/bookings', exhibitordata, {
+            const fetchresponse = await axios.post('https://mernevent-sphere-production.up.railway.app/api/bookings', exhibitordata, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

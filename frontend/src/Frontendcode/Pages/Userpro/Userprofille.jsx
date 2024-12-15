@@ -28,7 +28,7 @@ const UserProfile = () => {
     if (file) formData.append('Userimage', file);
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/adduser/${User.userId}`, formData, {
+      const response = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/adduser/${User.userId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -84,7 +84,7 @@ const UserProfile = () => {
   // useEffect(()=>{
   //       const fetchUser = async()=>{
   //         try {
-  //           const responce = await axios.get(`http://localhost:5000/api/adduser/${userId}`); 
+  //           const responce = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/adduser/${userId}`); 
   //           setUserData(responce.data);
   //         } catch (error) {
   //             console.log("Error Fetching User",error)    

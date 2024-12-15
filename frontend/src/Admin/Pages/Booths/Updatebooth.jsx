@@ -19,7 +19,7 @@ const Updatebooth = () => {
     useEffect(() => {
         const fetchBooth = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/addbooth/${id}`);
+                const response = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/addbooth/${id}`);
                 setboothName(response.data.boothName);
                 setfloorId(response.data.floorId);
                 console.log(response.data);
@@ -34,7 +34,7 @@ const Updatebooth = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/addfloor/');
+                const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addfloor/');
                 setfloors(response.data);
                 console.log(response.data.floor);
             } catch (error) {
@@ -54,7 +54,7 @@ const Updatebooth = () => {
 
         console.log(BoothData);
         try {
-            const response = await axios.put(`http://localhost:5000/api/addbooth/${id}`, BoothData);
+            const response = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addbooth/${id}`, BoothData);
             if (response.status === 200) {
                 setError("");
                 setSuccess(response.data.success);

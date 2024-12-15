@@ -20,7 +20,7 @@ const Addhalls = () => {
 
     useEffect(async () => {
 
-        const Response = await axios("http://localhost:5000/api/addbooth/");
+        const Response = await axios("https://mernevent-sphere-production.up.railway.app/api/addbooth/");
 
         setBoothId(Response.data.boths);
         setFloorId(Response.data.floor);
@@ -42,7 +42,7 @@ const Addhalls = () => {
         console.log(HallData)
 
         try {
-            const HallResponse = await axios.post("http://localhost:5000/api/addhall", HallData)
+            const HallResponse = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addhall", HallData)
 
 
             setError("")

@@ -12,7 +12,7 @@ const Showfloor = () => {
   useEffect(() => {
     const fetchFloors = async () => {
       try {
-        const responseData = await axios.get('http://localhost:5000/api/addfloor');
+        const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addfloor');
         setFloors(responseData.data);
       } catch (error) {
         console.error('Error fetching floors:', error);
@@ -23,7 +23,7 @@ const Showfloor = () => {
   }, [Floors]);
 
   const DeleteFloor = async (id) => {
-    const singleDelete = await axios.delete(`http://localhost:5000/api/addfloor/${id}`)
+    const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/addfloor/${id}`)
     if (singleDelete == 201) {
 
       setFloors(Floors.filter(floor => floor._id !== id));

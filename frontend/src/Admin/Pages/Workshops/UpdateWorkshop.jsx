@@ -27,7 +27,7 @@ const Updateworkshop = () => {
     useEffect(() => {
         const fetchSpeakers = async () => {
             try {
-                const speakerResponse = await axios.get("http://localhost:5000/api/addspeaker");
+                const speakerResponse = await axios.get("https://mernevent-sphere-production.up.railway.app/api/addspeaker");
                 setSortedSpeaker(speakerResponse.data);
             } catch (error) {
                 console.error('Error fetching speakers:', error);
@@ -40,7 +40,7 @@ const Updateworkshop = () => {
         if (id) {
             const fetchWorkshopData = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/addworkshop/${id}`);
+                    const response = await axios.get(`https://mernevent-sphere-production.up.railway.app/api/addworkshop/${id}`);
                     const workshopData = response.data;
                     setTopic(workshopData[0].Topic);
                     setDate(workshopData[0].Date);
@@ -57,7 +57,7 @@ const Updateworkshop = () => {
     useEffect(() => {
         const fetchBooths = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setBooths(responsee.data.booth);
                 const unoccupiedHalls = responsee.data.Halls.filter(hall => hall.status === 'unoccupied');
                 sethalls(unoccupiedHalls);
@@ -74,7 +74,7 @@ const Updateworkshop = () => {
     useEffect(() => {
         const fetchFloors = async () => {
             try {
-                const responsee = await axios.get('http://localhost:5000/api/addevent/');
+                const responsee = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent/');
                 setfloors(responsee.data.floor);
 
 
@@ -155,12 +155,12 @@ const Updateworkshop = () => {
             let FetchResponse;
             if (id) {
                 // Update existing workshop
-                FetchResponse = await axios.put(`http://localhost:5000/api/addworkshop/${id}`, WorkshopData, {
+                FetchResponse = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addworkshop/${id}`, WorkshopData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
             } else {
                 // Create new workshop
-                FetchResponse = await axios.post("http://localhost:5000/api/addworkshop", WorkshopData, {
+                FetchResponse = await axios.post("https://mernevent-sphere-production.up.railway.app/api/addworkshop", WorkshopData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
             }
@@ -177,7 +177,7 @@ const Updateworkshop = () => {
                 setWorkshopimage(null);
 
                 if (SorthallId) {
-                    await axios.put(`http://localhost:5000/api/addhall/${SorthallId}/status`, { status: "occupied" });
+                    await axios.put(`https://mernevent-sphere-production.up.railway.app/api/addhall/${SorthallId}/status`, { status: "occupied" });
                 }
             }
         } catch (error) {

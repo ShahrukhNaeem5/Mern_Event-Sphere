@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
         try {
-            const responseData = await axios.get('http://localhost:5000/api/addevent');
+            const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent');
             seteventDetail(responseData.data.events);
         } catch (error) {
             console.error('Error fetching events:', error);
@@ -35,7 +35,7 @@ const Home = () => {
   useEffect(() => {
     const fetchSpeaker = async () => {
       try {
-        const responseData = await axios.get('http://localhost:5000/api/addspeaker');
+        const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addspeaker');
         setspeakerDetail(responseData.data);
       } catch (error) {
         console.error('Error fetching Speakers:', error);

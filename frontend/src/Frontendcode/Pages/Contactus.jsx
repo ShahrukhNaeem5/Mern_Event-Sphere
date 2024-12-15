@@ -29,7 +29,7 @@ const Contactus = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact/', contactData);
+      const response = await axios.post('https://mernevent-sphere-production.up.railway.app/api/contact/', contactData);
       successNotify(response.data.msg || 'Message sent successfully!');
 
       // Clear input fields after successful submission

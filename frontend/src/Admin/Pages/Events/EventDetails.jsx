@@ -14,7 +14,7 @@ const EventDetails = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const responseData = await axios.get('http://localhost:5000/api/addevent');
+                const responseData = await axios.get('https://mernevent-sphere-production.up.railway.app/api/addevent');
                 seteventDetail(responseData.data.events);
             } catch (error) {
                 console.error('Error fetching events:', error);
@@ -26,7 +26,7 @@ const EventDetails = () => {
 
 
     const DeleteEvent = async (id) => {
-        const singleDelete = await axios.delete(`http://localhost:5000/api/addevent/${id}`)
+        const singleDelete = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/addevent/${id}`)
         if (singleDelete == 201) {
             setError("")
             setSuccess("Event Deleted")

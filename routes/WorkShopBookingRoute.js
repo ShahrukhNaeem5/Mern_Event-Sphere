@@ -4,7 +4,7 @@ const workshopBookingModel = require("../models/WorkshopBooking");
 const mongoose = require("mongoose");
 
 // GET all workshop bookings
-// http://localhost:5000/api/workshopbooking
+// https://mernevent-sphere-production.up.railway.app/api/workshopbooking
 router.get("/", async (req, res) => {
     try {
         const workshopBookings = await workshopBookingModel.find().populate("user").populate("workshop");
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 
 
 // GET  workshop bookings of logedIn user
-// http://localhost:5000/api/workshopbooking/:Userid
+// https://mernevent-sphere-production.up.railway.app/api/workshopbooking/:Userid
 router.get("/:id", async (req, res) => {
     try {
             // user id of logedIn user
@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST a new workshop booking
-// http://localhost:5000/api/workshopbooking
+// https://mernevent-sphere-production.up.railway.app/api/workshopbooking
 router.post("/", async (req, res) => {
     try {
         const { user, workshop } = req.body;

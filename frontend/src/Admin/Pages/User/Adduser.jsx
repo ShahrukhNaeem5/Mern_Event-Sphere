@@ -12,7 +12,7 @@ const Adduser = () => {
     useEffect(() => {
         const fetchRoles = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/adduser/role');
+                const response = await axios.get('https://mernevent-sphere-production.up.railway.app/api/adduser/role');
                 const roles = response.data;
 
                 console.log(roles);
@@ -48,7 +48,7 @@ const Adduser = () => {
 
         try {
 
-            const fetchUser = await axios.post('http://localhost:5000/api/adduser', userData,
+            const fetchUser = await axios.post('https://mernevent-sphere-production.up.railway.app/api/adduser', userData,
                 { headers: { 'Content-Type': 'multipart/form-data' } })
             setError("")
             setSuccess(fetchUser.data.success)

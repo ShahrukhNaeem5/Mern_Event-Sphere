@@ -33,7 +33,7 @@ const Profile = () => {
     if (file) formData.append('Userimage', file);
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/adduser/${User.userId}`, formData, {
+      const response = await axios.put(`https://mernevent-sphere-production.up.railway.app/api/adduser/${User.userId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -62,7 +62,7 @@ const Profile = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/adduser/${User._id}`, {
+      await axios.put(`https://mernevent-sphere-production.up.railway.app/api/adduser/${User._id}`, {
         Userpassword: newPassword,
       });
 
@@ -81,7 +81,7 @@ const Profile = () => {
 
   const handleDelete = async (userId) => {
     try {
-        const response = await axios.delete(`http://localhost:5000/api/adduser/${userId}`);
+        const response = await axios.delete(`https://mernevent-sphere-production.up.railway.app/api/adduser/${userId}`);
         
         // Clear token from localStorage
         localStorage.clear();

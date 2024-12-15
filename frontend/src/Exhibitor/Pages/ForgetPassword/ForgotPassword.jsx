@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/adduser/forgot-password', { email });
+            const response = await axios.post('https://mernevent-sphere-production.up.railway.app/api/adduser/forgot-password', { email });
             console.log(response)
             toast.success(response.data);
             navigate(`/verify-pin?email=${email}`); // Navigate to pin verification page
