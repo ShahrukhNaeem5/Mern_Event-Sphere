@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
+const helmet = require("helmet");
+
 
 const app = express();
 
@@ -41,6 +43,12 @@ app.use('/api/addspeaker', Speakerroutes);
 app.use('/api/addhall', Hallroutes);
 app.use('/api/addworkshop', Workshoproutes);
 app.use('/api/workshopbooking', WorkShopBookingroutes);
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      fontSrc: ["'self'", "*"],  // Allow all sources (not recommended)
+    }
+  }));
 
 
 
