@@ -42,21 +42,19 @@ app.use('/api/addhall', Hallroutes);
 app.use('/api/addworkshop', Workshoproutes);
 app.use('/api/workshopbooking', WorkShopBookingroutes);
 
-// Serve React Frontend in Production
-if (process.env.NODE_ENV === "production") {
-    const frontendPath = path.join(__dirname, "frontend", "build");
 
-    // Ensure the frontend build exists
-    if (fs.existsSync(frontendPath)) {
-        app.use(express.static(frontendPath));
-        app.get("*", (req, res) => {
-            res.sendFile(path.join(frontendPath, "index.html"));
-        });
-    } else {
-        console.error("Frontend build folder not found. Did you run `npm run build` in the frontend?");
-    }
-} else {
-    console.log("Running in development mode. Frontend not served.");
+
+
+/* --------- */
+if (process.env.NODE_ENV === 'production') {
+    // Make sure the path points to the correct build folder
+    const buildPath = path.join(__dirname, 'frontend', 'build');
+    app.use(express.static(buildPath));
+
+    // This will handle all routes and serve index.html for non-API routes
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(buildPath, 'index.html'));
+    });
 }
 
 // Error Handling Middleware
