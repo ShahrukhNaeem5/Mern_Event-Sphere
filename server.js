@@ -5,7 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const helmet = require("helmet");
-
+const crypto = require("crypto");
 
 const app = express();
 
@@ -14,9 +14,33 @@ ConnectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+        origin: ['https://your-frontend-url.com', 'http://localhost:3000'], // Replace with your frontend URLs
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+    })
+);
 
-// Create and serve uploads folder (note: for production, use cloud storage like AWS S3)
+// Secure headers using Helmet with CSP
+app.use((req, res, next) => {
+    res.locals.nonce = crypto.randomBytes(16).toString("base64");
+    next();
+});
+
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+            imgSrc: ["'self'", "https://mdbcdn.b-cdn.net"],
+            fontSrc: ["'self'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+            scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`],
+            styleSrc: ["'self'", "'unsafe-inline'"], // Adjust as per your CSS needs
+        },
+    })
+);
+
+// Create and serve static 'uploads' folder (for local file storage)
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir);
@@ -34,6 +58,7 @@ const Hallroutes = require('./routes/Hallroutes');
 const Workshoproutes = require('./routes/Workshoproutes');
 const WorkShopBookingroutes = require('./routes/WorkShopBookingRoute');
 
+// Mount API routes
 app.use('/api/addevent', Eventroutes);
 app.use('/api/adduser', Userroutes);
 app.use('/api/bookings', BookingsRoute);
@@ -43,44 +68,31 @@ app.use('/api/addspeaker', Speakerroutes);
 app.use('/api/addhall', Hallroutes);
 app.use('/api/addworkshop', Workshoproutes);
 app.use('/api/workshopbooking', WorkShopBookingroutes);
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],                // Allow default content from same origin
-      imgSrc: ["'self'", "https://mdbcdn.b-cdn.net"],  // Allow images from the same origin and from mdbcdn.b-cdn.net
-      fontSrc: ["'self'", "*"],      
-      scriptSrc: ["'self'", "'unsafe-inline'"]
-      // Allow fonts from any source (not recommended, but works)
-      // You can add other directives like scriptSrc, styleSrc, etc. based on your needs
-    
-    }
-  }));
-  
-  
 
-
-
-
-/* --------- */
+// Serve React build files in production
 if (process.env.NODE_ENV === 'production') {
-    // Make sure the path points to the correct build folder
     const buildPath = path.join(__dirname, 'frontend', 'build');
-    console.log("Build folder path:", buildPath); // Check if this is correct
+    if (!fs.existsSync(buildPath)) {
+        console.error('Build folder not found! Did you run `npm run build` in the frontend folder?');
+        process.exit(1);
+    }
 
     app.use(express.static(buildPath));
-
-    // This will handle all routes and serve index.html for non-API routes
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(buildPath, 'index.html'));
     });
 }
 
-// Error Handling Middleware
+// Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ message: "Internal Server Error", error: err.message });
+    res.status(500).json({
+        message: "Internal Server Error",
+        error: err.message,
+    });
 });
 
-// Start Server
+// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
