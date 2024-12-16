@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './SingleWorkshop.css'; 
 
 const SingleEvent = (prop) => {
-  console.log(`This is the event prop `,prop)
   
 
   const {_id,title,date,location,description,theme,Eventimage} = prop.event;
@@ -40,7 +39,7 @@ const SingleEvent = (prop) => {
       {/* Speaker information section */}
       <div className="schedule-box-bio d-md-flex">
         <div className="schedule-bio-image mb-2">
-        <small><strong>Theme:</strong> <span className="pink">{theme}</span> </small>
+        <small><strong>Themes:</strong> <span className="pink">{theme}</span> </small>
         {/* <p className="mt-1 mb-0"><Link to="/Speakerdetail" className="pink">{theme}</Link></p> */}
           {/* Speaker image */}
           {/* <img src="images/team/1.jp  g" alt="team-image" className="me-2 rounded-circle" /> */}
