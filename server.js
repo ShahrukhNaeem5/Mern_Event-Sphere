@@ -47,10 +47,15 @@ app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],                // Allow default content from same origin
       imgSrc: ["'self'", "https://mdbcdn.b-cdn.net"],  // Allow images from the same origin and from mdbcdn.b-cdn.net
-      fontSrc: ["'self'", "*"],              // Allow fonts from any source (not recommended, but works)
+      fontSrc: ["'self'", "*"],      
+      scriptSrc: ["'self'", "'unsafe-inline'"]
+      // Allow fonts from any source (not recommended, but works)
       // You can add other directives like scriptSrc, styleSrc, etc. based on your needs
+    
     }
   }));
+  
+  
 
 
 
