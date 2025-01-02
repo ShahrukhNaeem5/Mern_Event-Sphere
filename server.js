@@ -29,7 +29,7 @@ app.use(
 
 // Secure headers using Helmet with CSP
 app.use((req, res, next) => {
-    res.locals.nonce = crypto.randomBytes(16).toString("base64");
+    res.locals.nonce = crypto.randomBytes(16).toString("base64"); // Generate a unique nonce for each request
     next();
 });
 
@@ -38,14 +38,19 @@ app.use(
         contentSecurityPolicy: {
             directives: {
                 defaultSrc: ["'self'"],
-                scriptSrc: ["'self'", "'unsafe-inline'", `'nonce-${res.locals.nonce}'`],
+                scriptSrc: [
+                    "'self'",
+                    "'unsafe-inline'",
+                    (req, res) => `'nonce-${res.locals.nonce}'`, // Dynamically insert nonce
+                ],
                 styleSrc: ["'self'", "'unsafe-inline'"],
                 imgSrc: ["'self'", "data:"],
-                connectSrc: ["'self'", "https://ipapi.co"], // External APIs
+                connectSrc: ["'self'", "https://ipapi.co"], // Allow your external APIs
             },
         },
     })
 );
+
 
 // Create and serve static 'uploads' folder (for local file storage)
 const uploadsDir = path.join(__dirname, 'uploads');
