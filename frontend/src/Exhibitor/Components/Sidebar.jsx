@@ -20,7 +20,7 @@ const Sidebar = () => {
                 <Link to="/Exhibitor" class="logo-icon"><span class="logo-text text-white" >EventSphere</span></Link>
                 <div class="sidebar-user-switcher user-activity-online">
                     <Link to="/profile">
-                        <img src={User.Userimage ? `http://localhost:5000/uploads/profileImages/${User.Userimage}` : 'avatar1.jpg'}/>
+                        <img src={User.Userimage ? `https://mernevent-sphere-production.up.railway.app/uploads/profileImages/${User.Userimage}` : 'avatar1.jpg'}/>
                         <span class="activity-indicator"></span>
                         <span class="user-info-text text-white  ">{User.Username}<br/><span class="user-state-info">Active</span></span>
                     </Link>

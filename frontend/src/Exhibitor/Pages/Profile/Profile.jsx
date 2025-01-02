@@ -176,7 +176,7 @@ const Profile = () => {
                                   <div className="d-flex align-items-center mb-4">
                                     <div className="flex-shrink-0">
                                       <img
-                                        src={User.Userimage ? `http://localhost:5000/uploads/profileImages/${User.Userimage}` : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp'}
+                                        src={User.Userimage ? `https://mernevent-sphere-production.up.railway.app/uploads/profileImages/${User.Userimage}` : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp'}
                                         alt="avatar"
                                         className="img-fluid rounded-circle border border-dark border-3"
                                         style={{ width: 70 }}

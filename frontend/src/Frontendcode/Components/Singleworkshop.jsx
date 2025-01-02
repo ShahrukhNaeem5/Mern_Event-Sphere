@@ -52,7 +52,7 @@ const SingleWorkshop = (props) => {
     <>
       <div className="schedule-list-box bg-lightgrey border border-white border-2 rounded px-6 py-4 mb-5">
         <div className="event-image mb-3">
-          <img src={Workshopimage ? `http://localhost:5000/uploads/workshopImages/${Workshopimage}` :  '' } style={{ height: "240px" }} alt="event" className="img-fluid" />
+          <img src={Workshopimage ? `https://mernevent-sphere-production.up.railway.app/uploads/workshopImages/${Workshopimage}` :  '' } style={{ height: "240px" }} alt="event" className="img-fluid" />
         </div>
 
         <div className="schedule-box-title">

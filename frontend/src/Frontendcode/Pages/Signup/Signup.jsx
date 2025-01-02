@@ -175,7 +175,7 @@ const Signup = () => {
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
       <ToastContainer />
     </>
   );

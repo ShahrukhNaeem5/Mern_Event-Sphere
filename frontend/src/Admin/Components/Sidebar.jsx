@@ -41,7 +41,7 @@ const Sidebar = () => {
             </Link>
             <div className="sidebar-user-switcher user-activity-online">
               <Link to="">
-                <img src={User.Userimage ? `http://localhost:5000/uploads/profileImages/${User.Userimage}` : 'avatar1.jpg'} alt="avatar" />
+                <img src={User.Userimage ? `https://mernevent-sphere-production.up.railway.app/uploads/profileImages/${User.Userimage}` : 'avatar1.jpg'} alt="avatar" />
                 <span className="activity-indicator"></span>
                 <span className="user-info-text text-white">
                   {User.Username}<br />

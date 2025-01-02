@@ -138,7 +138,7 @@ const UserProfile = () => {
                     height='200px'  width="200px"   
                     // style={{ objectFit: 'cover' }}
                     style={{ objectFit: 'fill' }}
-                    src={User.Userimage ? `http://localhost:5000/uploads/profileImages/${User.Userimage}` : 'avatar.jpg' } 
+                    src={User.Userimage ? `https://mernevent-sphere-production.up.railway.app/uploads/profileImages/${User.Userimage}` : 'avatar.jpg' } 
                     alt="User Profile" />
 
                   {/* Camera Icon to trigger file input */}
