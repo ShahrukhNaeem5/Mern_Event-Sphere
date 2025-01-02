@@ -1,11 +1,11 @@
 const express = require("express");
-const { ConnectDB } = require("./Config/Db");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const helmet = require("helmet");
 const crypto = require("crypto");
+const { ConnectDB } = require("./Config/Db");
 
 const app = express();
 
@@ -14,9 +14,14 @@ ConnectDB();
 
 // Middleware
 app.use(express.json());
+
+// CORS Configuration
 app.use(
     cors({
-        origin: ['https://your-frontend-url.com', 'http://localhost:3000'], // Replace with your frontend URLs
+        origin: [
+            'https://mernevent-sphere-production.up.railway.app/', // Replace with your deployed frontend URL
+            'http://localhost:3000' // Local development URL
+        ],
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     })
@@ -29,13 +34,15 @@ app.use((req, res, next) => {
 });
 
 app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: ["'self'"],
-            imgSrc: ["'self'", "https://mdbcdn.b-cdn.net"],
-            fontSrc: ["'self'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
-            scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`],
-            styleSrc: ["'self'", "'unsafe-inline'"], // Adjust as per your CSS needs
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", `'nonce-${res.locals.nonce}'`],
+                styleSrc: ["'self'", "'unsafe-inline'"],
+                imgSrc: ["'self'", "data:"],
+                connectSrc: ["'self'", "https://ipapi.co"], // External APIs
+            },
         },
     })
 );
@@ -47,7 +54,7 @@ if (!fs.existsSync(uploadsDir)) {
 }
 app.use('/uploads', express.static(uploadsDir));
 
-// Routes
+// Import Routes
 const Eventroutes = require('./routes/Eventroutes');
 const Userroutes = require('./routes/Userroutes');
 const BookingsRoute = require('./routes/Bookingsroute');
@@ -81,6 +88,8 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(buildPath, 'index.html'));
     });
+} else {
+    console.log("Running in development mode.");
 }
 
 // Error handling middleware
